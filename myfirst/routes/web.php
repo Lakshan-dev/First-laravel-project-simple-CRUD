@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\addMemberController;
+use App\Http\Controllers\fileUploadController;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -55,3 +56,7 @@ Route::get('logout', function () {
 
 Route::view('register','add');
 Route::post('member',[addMemberController::class,'addMember']);
+
+//file upload
+Route::view('file','upload');
+Route::post('file',[fileUploadController::class,'fileUpload']);
