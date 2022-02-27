@@ -3,6 +3,7 @@
 use App\Http\Controllers\addMemberController;
 use App\Http\Controllers\fileUploadController;
 use App\Http\Controllers\userController;
+use App\Http\Controllers\userListController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -60,3 +61,25 @@ Route::post('member',[addMemberController::class,'addMember']);
 //file upload
 Route::view('file','upload');
 Route::post('file',[fileUploadController::class,'fileUpload']);
+
+//profile page
+
+Route::get('/profile/{lang}', function ($lang) {
+    App::setlocale($lang);
+    return view('profile');
+});
+
+//user list
+Route::get('/list',[userListController::class,'getList']);
+
+//add data user
+Route::post('/addData',[userListController::class,'addData']);
+
+//delete user
+Route::get('/delete/{id}',[userListController::class,'deleteData']);
+
+//showupdate data
+Route::get('showData/{id}',[userListController::class,'showData']);
+
+//update data
+Route::post('/update',[userListController::class,'updateData']);
